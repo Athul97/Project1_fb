@@ -1,0 +1,120 @@
+
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+
+/* header{
+height: 85px;
+background-color:#405b9b;
+
+} */
+
+/* #logo{
+    height:83px;
+    padding-left: 165px;
+} */
+
+.logo{
+	color: white;
+	margin: 0;
+	font-size: 42px;
+    padding-top: 25px;
+    padding-left: 180px;
+	font-weight: bold;
+} 
+
+.art{
+    background-color: #e9ecf2;
+    height: 600px;
+}
+.align{
+    text-align: center;
+}
+
+.font{
+	color:white;
+	font-size: 12px;
+
+}
+
+/* .forgot{
+	font-size: 11px;
+	color: #c6cee2;
+} */
+
+.loginbtn{
+	/* width: 80px; */
+	margin-top: 25px;
+	border: 1px solid rgb(6, 6, 39);
+	background-color: #3d5db6;
+}
+
+.logip{
+	/* width: 150px; */
+	font-size: 12px;
+}
+
+.p1{
+	margin-top: 30px;
+	padding-left: 180px;
+	font-size: 20px;
+	color:darkblue;
+	font-weight: bold;
+}
+
+.connect{
+	margin-left: 180px;
+}
+
+.signpad{
+	padding-left: 85px;
+	margin-top: 15px;
+}
+
+
+/* .p1{
+	color: black;
+	font-size: 15px;
+	padding-left: 85px;
+} */
+
+
+h3{
+	font-size: 35px;
+	font-weight: bold;
+	margin-left: 85px;
+}
+
+.gend{
+	font-size: 18px;
+	font-weight: 400;
+	padding-left: 8px;
+}
+
+.date{
+	width: 85px;
+}
+
+.birth{
+	font-weight:600;
+	color: gray;
+}
+
+
+.clk{
+	padding-left: 85px;
+	font-size: 12px;
+}
+
+.signbtn{
+  background-color: green;
+  width: 150px;
+
+}
+
+footer ul li{
+	display: inline-block;
+	font-size: 12px;
+	margin-left: 8px;
+}
+

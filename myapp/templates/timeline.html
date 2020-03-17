@@ -1,0 +1,218 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'fbcss.css'%}" media="screen and ( min-width:769px)" />
+
+    <title>Document</title>
+
+    <style>
+        textarea {
+            box-sizing: border-box;
+            border: 2px solid white;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        #ul1 {
+            list-style-type: none;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        #ul2 {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        #ul2 li {
+            float: left;
+            border-right: 1px solid #bbb;
+            width: 220px;
+            text-decoration-color: black;
+            text-align: center;
+        }
+        
+        #propic {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="row" style="height: 60px; background-color:#405b9b;">
+            <div class="col-md-2"></div>
+            <div class="col-md-6" style="margin-top: 10px; height: 50px;">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="my-2 my-sm-0" type="submit"><i class="material-icons">&#xe8b6;</i></button>
+                </form>
+                <!-- <input type="text" placeholder="search facebook" style="width: 500px;">
+                <button><i class="material-icons">&#xe8b6;</i></button> -->
+            </div>
+            <div class="col-md-3">
+                <!-- <p style="color: white;"><img src="{% static 'dp.jpg'%}" height="30px" width="30px" style="margin:10px ;"><a href="#" style="color: white;"> {{user.firstname}} {{user.surname}}</a></p> -->
+                <p style="color: white;"><img src="{{user.userimage.url}}" id="propic" height="30px" width="30px" style="margin:10px ;"><a href="#" style="color: white;"> {{user.firstname}} {{user.surname}}</a></p>
+
+            </div>
+
+        </div>
+
+    </header>
+    <article style="height: 100%;">
+
+        <div class="container-fluid">
+            <div class="row art">
+
+                <!--Left position start-->
+                <div class="col-md-2">
+                    <ul id="ul1">
+                        <a href="">
+                            <li>{{user.firstname}} {{user.surname}}</li>
+                        </a>
+                        <a href="/myapp/profile/">
+                            <li>Edit profile</li>
+                        </a>
+
+                        <a href="/myapp/change/">
+                            <li>Change password</li>
+                        </a>
+                        <a href="">
+                            <li>View friends</li>
+                        </a>
+
+
+                        <!-- <li><i class="material-icons">&#xe7fd;</i>profile name</li>
+                        <li><i class="material-icons">&#xe254;</i> Edit profile</li> -->
+                    </ul>
+
+                </div>
+
+                <!--Left position start-->
+
+                <!--Center position start-->
+
+                <div class="col-md-6">
+                    <div class="row" style="height: 200px; margin-bottom: 15px; margin-top: 15px; background-color: white;">
+                        <div class="row" style="height:40px; margin-left: 15px; margin-top: 10px;">
+                            <ul id="ul2">
+                                <li><i class="material-icons">&#xe254;</i>Update Status</li>
+                                <li><i class="material-icons">&#xe439;</i> Add Photo/Video</li>
+                                <li><i class="material-icons">&#xe85d;</i>Write Note</li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <!-- <img src="{% static 'dp.jpg'%}" height="80px" width="80px" style="margin-left: 15px;"></div> -->
+                                <img src="{{user.userimage.url}}" class="rounded" style="margin-left: 15px; height:80px; width:80px;"></div>
+
+                        </div>
+                        <div class="col-md-10">
+                            <textarea name="mind" id="" cols="50" rows="3" placeholder="What's on your mind?"></textarea> </div>
+                    </div>
+                    <div class="row" style="background-color: white; height: 100%;">
+                    </div>
+                </div>
+
+                <!--Center position ends-->
+
+                <!-- Right Position start-->
+                <div class="col-md-3" style="height: 100%; background-color: white; margin-left: 15px; margin-top: 15px;">
+                    <p style="margin-top: 10px;">YOUR ADS</p>
+                    <div style="background-color: rgb(94, 94, 223); height: 500px; margin-right:0px ;">
+
+                    </div>
+
+                </div>
+                <!-- Right Position start-->
+
+            </div>
+        </div>
+
+    </article>
+
+    <footer>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 d-none d-sm-block">
+                <ul>
+                    <li><a href="">English (UK)</a></li>
+                    <li><a href="">മലയാളം</a></li>
+                    <li><a href="">தமிழ்</a></li>
+                    <li><a href="">ಕನ್ನಡ</a></li>
+                    <li><a href="">हिन्दी</a></li>
+                    <li><a href="">اردو</a></li>
+                    <li><a href="">বাংলা</a></li>
+                    <li><a href="">తెలుగు</a></li>
+                    <li><a href="">Español</a></li>
+                    <li><a href="">Português (Brasil)</a></li>
+                    <li><a href="">Français (France)</a></li>
+                    <li><button type="button" class="btn btn-light" style="background-color: rgb(201, 201, 201); font-weight: 600;">+</button></li>
+                </ul>
+                <hr>
+            </div>
+            <!-- <div class="col-md-2">
+    </div>
+    <div class="col-md-2">
+        </div> -->
+            <div class="col-md-8 offset-md-2 d-none d-sm-block">
+                <ul>
+                    <li><a href="">SignUp</a></li>
+                    <li><a href="">Log In</a></li>
+                    <li><a href="">Messenger</a></li>
+                    <li><a href="">Facebook Lite</a></li>
+                    <li><a href="">Watch</a></li>
+                    <li><a href="">People</a></li>
+                    <li><a href="">Pages</a></li>
+                    <li><a href="">Page categories</a></li>
+                    <li><a href="">Places</a></li>
+                    <li><a href="">Games</a></li>
+                    <li><a href="">Locations</a></li>
+                    <li><a href="">Marketplace</a></li>
+                    <li><a href="">Groups</a></li>
+                    <li><a href="">Instagram</a></li> <br>
+                    <p style="font-size: 12px; color: grey; padding-left: 8px;">Facebook &copy 2019</p>
+
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="row">
+        <div class="col-xs-10 offset-xs-1 d-block d-sm-none">
+            <div class="col-xs-5">
+                <ul>
+                    <li><a href="">English (UK)</a></li>
+                    <li><a href="">മലയാളം</a></li>
+                    <li><a href="">தமிழ்</a></li>
+                    <li><a href="">ಕನ್ನಡ</a></li>
+                    <li><a href="">हिन्दी</a></li>
+                    <li><a href="">বাংলা</a></li>
+                </ul>
+            </div>
+
+            <div></div>
+
+        </div>
+    </div>
+</body>
+
+</html>

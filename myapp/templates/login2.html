@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'logincss.css'%}" />
+
+</head>
+
+<body>
+    <header>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <label class="logo">facebook</label> -->
+                <img src="{% static 'facebook.png'%}" id="logo">
+                <!-- <input type="button" name="Create New Account" class="create"> -->
+                <button type="button" class="btn btn-primary create">Create New Account</button>
+            </div>
+        </div>
+    </header>
+
+    <article>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 center">
+                <div class="row">
+                    <div class="col-md-12 align"><label class="font">Login To Facebook</label></div>
+                </div>
+                <form action="/myapp/userData/" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-2 offset-md-2 input"> Login as:</div>
+                        <div class="col-md-2 "><img src="{% static 'dp.jpg'%}" height="100px" width="100px" style="padding-bottom: 10px;"></div>
+                        <!-- <div class="col-md-4"><label>John<p>john@gmail.com</p></label></div> -->
+                        <div class="col-md-4"><label><p>{{username}}</p></label></div>
+
+                    </div>
+
+                    <input type="hidden" value="{{username}}" name="username">
+                    <div class="row">
+                        <div class="col-md-2 offset-md-2 input"> Password:</div>
+                        <div class="col-md-6" style="padding-bottom: 10px;"><input class="form-control" name="password" type="password" placeholder="Password"></div>
+                        <!-- <div class="col-md-6 offset-md-4"><input type="checkbox">Keep me logged in</div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 offset-md-4 ">
+                            <button type="submit" class="btn btn-primary btn-md btn-block">Login</button></div>
+                        <div class="col-md-6">or <label style="color: blue; font-weight: bold; font-size: 15px;"> Sign up for Facebook</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 offset-md-4"><label class="recover">Forgotten Password?</label></div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </article>
+
+
+    <footer>
+
+        <br>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 d-none d-sm-block">
+                <ul>
+                    <li><a href="">English (UK)</a></li>
+                    <li><a href="">മലയാളം</a></li>
+                    <li><a href="">தமிழ்</a></li>
+                    <li><a href="">ಕನ್ನಡ</a></li>
+                    <li><a href="">हिन्दी</a></li>
+                    <li><a href="">اردو</a></li>
+                    <li><a href="">বাংলা</a></li>
+                    <li><a href="">తెలుగు</a></li>
+                    <li><a href="">Español</a></li>
+                    <li><a href="">Português (Brasil)</a></li>
+                    <li><a href="">Français (France)</a></li>
+                    <li><button type="button" class="btn btn-light" style="background-color: rgb(201, 201, 201); font-weight: 600;">+</button></li>
+                </ul>
+                <hr>
+            </div>
+            <!-- <div class="col-md-2">
+           </div>
+           <div class="col-md-2">
+               </div> -->
+            <div class="col-md-8 offset-md-2 d-none d-sm-block">
+                <ul>
+                    <li><a href="">SignUp</a></li>
+                    <li><a href="">Log In</a></li>
+                    <li><a href="">Messenger</a></li>
+                    <li><a href="">Facebook Lite</a></li>
+                    <li><a href="">Watch</a></li>
+                    <li><a href="">People</a></li>
+                    <li><a href="">Pages</a></li>
+                    <li><a href="">Page categories</a></li>
+                    <li><a href="">Places</a></li>
+                    <li><a href="">Games</a></li>
+                    <li><a href="">Locations</a></li>
+                    <li><a href="">Marketplace</a></li>
+                    <li><a href="">Groups</a></li>
+                    <li><a href="">Instagram</a></li> <br>
+                    <p style="font-size: 12px; color: grey; padding-left: 8px;">Facebook &copy 2019</p>
+
+                </ul>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>

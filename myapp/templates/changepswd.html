@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        .navbar {
+            background-color: #415e9b;
+            border: 1px solid blue;
+            height: 85px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var pass_label = document.getElementById('lab');
+            $(document).click(function() {
+                passwords = $('.password');
+                if (passwords[1].value != passwords[2].value) {
+                    // alert('password mismatching');
+                    pass_label.innerHTML = 'password mismatching';
+                    return false;
+                }
+
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/myapp/updatepassword/',
+                    type: 'POST',
+                    data: {
+                        cur_password: passwords[0].value,
+                        new_password: passwords[1].value,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                    success: function(reponse) {
+                        alert(reponse);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h2 class="navbar-brand" style="color: white;">Facebook</h2>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row content"></div>
+        <div class="col-sm-8 text-left">
+            <!-- <form method="POST" action="/myapp/changepass/">
+                {% csrf_token %} -->
+            <div class="form-group">
+                current password
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="password" class="form-control password" required>
+
+                    <br>
+                </div>
+                new password
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="password" class="form-control password" required><br>
+                </div>
+                change password
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="password" class="form-control password" required><br>
+                </div><br><br>
+
+                <label id="lab" style="color: red;"></label><br>
+                <input type="button" class="btn btn-primary btn-group-sm " id="button" value="update">
+            </div>
+            <!-- </form> -->
+            <h1 style="color: red;">{{msg}}</h1>
+        </div>
+
+    </div>
+
+    <footer class="container-fluid text-center">
+        <p></p>
+    </footer>
+
+</body>
+
+</html>

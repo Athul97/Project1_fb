@@ -1,0 +1,263 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'fbcss.css'%}" media="screen and ( min-width:769px)" />
+
+
+    <script>
+        function signvalid() {
+            var fname = document.getElementById('fname');
+            var sname = document.getElementById('sname');
+            var mobmail = document.getElementById('mobmail');
+            var pswd = document.getElementById('pswd');
+
+            if (fname.value == "") {
+                alert("Name can't be blank");
+                return false;
+            } else
+            // return true;
+            if (pswd.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+        }
+
+        function loginvalid() {
+
+            var logmail = doccument.getElementById('logmail');
+            var logpass = doccument.getElementById('logpass');
+
+            if (logmail.value == "") {
+                alert("Field can't be blank");
+                return false
+            } else if (logpass.value == "") {
+                alert("Enter your password");
+                return false;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <div class="row" style="height: 85px; background-color:#405b9b;">
+            <div class="col-md-7 col-xs-12">
+                <!-- <label class="logo">facebook</label> -->
+                <center>
+                    <a href=""><img src="{% static 'facebook.png'%}" id="logo" class="img-responsive"></a>
+                </center>
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <form action="/myapp/userData/" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        <div class="col-md-4 col-xs-10">
+                            <div class="form-group">
+                                <label class="font" style="margin-left:10px;">Email or Phone</label>
+                                <input type="email" placeholder="" class="form-control" name="username" id="logmail" style="margin-left:10px; height: 30px;">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-8 offset-xs-4">
+                            <div class="form-group">
+                                <label class="font" style="margin-left:10px;">Password</label>
+                                <input type="password" placeholder="" class="form-control" name="password" id="logpass" style="margin-left:10px; height: 30px;">
+                                <label><a href="" style="color: rgb(208, 213, 230); font-size: 11px; margin-left: 10px;">Forgotten account?</a></label>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-8 offset-xs-2" style="padding-bottom: 10px;">
+                            <button type="submit" class="btn btn-primary loginbtn" style="width: 90%; margin-left: 5%;" onclick="loginvalid();">Login</button>
+                        </div>
+
+                        <div class="col-xs-8 offset-xs-4 d-block d-sm-none"><button type="button" class="btn btn-primary">Create New Account</button></div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <article>
+
+        <div class="row art">
+            <div class="col-sm-6 col-md-6 col-lg-6 d-none d-sm-block">
+                <div class="row">
+                    <p class="p1">Facebook helps you connect and share with the <br>people in your life.</p>
+                </div>
+                <div class="row"><img src="{% static 'connect.png'%}" class="connect"></div>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6 d-none d-sm-block">
+                <h3>Create an account</h3>
+                <h4 class="signpad">It's quick and easy</h4>
+                <form action="/myapp/signup/" method="POST">
+                    {% csrf_token %}
+                    <div class="row signpad">
+                        <div class="col-md-4">
+                            <input type="text" placeholder="First Name" class="form-control" name="fname" id="fname">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Surname" class="form-control" name="surname" id="sname">
+                        </div>
+                    </div>
+                    <div class="row signpad">
+                        <div class="col-md-8"><input type="email" placeholder="Mobile number or email address " class="form-control" name="username" id="mobmail"></div>
+                    </div>
+                    <div class="row signpad">
+                        <div class="col-md-8"><input type="password" placeholder="New password " class="form-control" name="pswd" id="pswd"></div>
+                    </div>
+
+                    <div>
+                        <h4 class="signpad birth">Birthday</h4>
+                    </div>
+                    <div class="row" style="padding-left: 60px;">
+                        <ul>
+                            <li style="display: inline-block;"><select class="form-control date" name="day" aria-label="Day">
+                <option>Day</option>
+                <option>1</option>
+                <option>2</option>
+                <option selected>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select></li>
+                            <li style="display: inline-block;"><select class="form-control date" name="month" aria-label="Month">
+                    <option selected>Month</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option selected>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select></li>
+
+                            <li style="display: inline-block;"><select class="form-control date" name="year" aria-label="Year">
+                        <option>Year</option>
+                        <option>2019</option>
+                        <option>2018</option>
+                        <option>2017</option>
+                        <option>2016</option>
+                        <option>2015</option>
+                        <option>2014</option>
+                        <option>2013</option>
+                        <option>2012</option>
+                        <option>2011</option>
+                        <option>2010</option>
+                        <option>2009</option>
+                        <option>2008</option>
+                        <option>2007</option>
+                        <option>2006</option>
+                        <option>2005</option>
+                        <option>2004</option>
+                        <option>2003</option>
+                        <option>2002</option>
+                        <option>2001</option>
+                        <option selected>2000</option>
+                        <option>1999</option>
+                        <option>1998</option>
+                        <option>1997</option>
+                    </select></li>
+                        </ul>
+                    </div>
+                    <h4 class="birth" style="padding-left: 85px;">Gender</h4>
+                    <div class="row">
+
+                        <ul style="padding-left: 100px;">
+                            <li style="display: inline-block;"><input type="radio" id="f" name="gender" value="female"><label class="gend">Female</label></li>
+                            <li style="display: inline-block; margin-left: 15px;"><input type="radio" id="m" name="gender" value="male"><label class="gend">Male</label></li>
+                            <li style="display: inline-block; margin-left: 15px;"><input type="radio" id="c" name="gender" value="custom"><label class="gend">Custom</label></li>
+                        </ul>
+                    </div>
+                    <div class="clk">By clicking Sign Up, you agree to our<a href="">Terms</a>,<a href="">Data Policy</a> and <br>
+                        <a href="">Cookie Policy</a>. You may receive SMS notifications from us and<br> can opt out at any time.</div>
+
+                    <div class="signpad"><button type="submit" class="btn btn-success signbtn" onclick="signvalid();">Sign Up</button></div>
+                </form>
+                <div class="signpad"><a href="">Create a Page</a> for a celebrity, band or business.</div>
+    </article>
+
+    <footer>
+        <br>
+        <div class="row">
+            <div class="col-md-8 offset-md-2 d-none d-sm-block">
+                <ul>
+                    <li><a href="">English (UK)</a></li>
+                    <li><a href="">മലയാളം</a></li>
+                    <li><a href="">தமிழ்</a></li>
+                    <li><a href="">ಕನ್ನಡ</a></li>
+                    <li><a href="">हिन्दी</a></li>
+                    <li><a href="">اردو</a></li>
+                    <li><a href="">বাংলা</a></li>
+                    <li><a href="">తెలుగు</a></li>
+                    <li><a href="">Español</a></li>
+                    <li><a href="">Português (Brasil)</a></li>
+                    <li><a href="">Français (France)</a></li>
+                    <li><button type="button" class="btn btn-light" style="background-color: rgb(201, 201, 201); font-weight: 600;">+</button></li>
+                </ul>
+                <hr>
+            </div>
+            <!-- <div class="col-md-2">
+    </div>
+    <div class="col-md-2">
+        </div> -->
+            <div class="col-md-8 offset-md-2 d-none d-sm-block">
+                <ul>
+                    <li><a href="">SignUp</a></li>
+                    <li><a href="">Log In</a></li>
+                    <li><a href="">Messenger</a></li>
+                    <li><a href="">Facebook Lite</a></li>
+                    <li><a href="">Watch</a></li>
+                    <li><a href="">People</a></li>
+                    <li><a href="">Pages</a></li>
+                    <li><a href="">Page categories</a></li>
+                    <li><a href="">Places</a></li>
+                    <li><a href="">Games</a></li>
+                    <li><a href="">Locations</a></li>
+                    <li><a href="">Marketplace</a></li>
+                    <li><a href="">Groups</a></li>
+                    <li><a href="">Instagram</a></li> <br>
+                    <p style="font-size: 12px; color: grey; padding-left: 8px;">Facebook &copy 2019</p>
+
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="row">
+        <div class="col-xs-10 offset-xs-1 d-block d-sm-none">
+            <div class="col-xs-5">
+                <ul>
+                    <li><a href="">English (UK)</a></li>
+                    <li><a href="">മലയാളം</a></li>
+                    <li><a href="">தமிழ்</a></li>
+                    <li><a href="">ಕನ್ನಡ</a></li>
+                    <li><a href="">हिन्दी</a></li>
+                    <li><a href="">বাংলা</a></li>
+                </ul>
+            </div>
+
+            <div></div>
+
+        </div>
+    </div>
+</body>
+
+</html>

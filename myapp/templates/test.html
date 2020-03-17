@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).click(function() {
+                passwords = $('.password');
+                if (passwords[1].value != passwords[2].value) {
+                    alert('password mismatching');
+                    return false;
+                }
+
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/myapp/updatepassword/',
+                    type: 'POST',
+                    data: {
+                        cur_password: passwords[0].value,
+                        new_password: passwords[1].value,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                    success: function(reponse) {
+                        alert(reponse);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <br>
+    <br>
+    <input type="password" placeholder="currentpass" class="password">
+    <input type="password" placeholder="newpass" class="password">
+    <input type="password" placeholder="confipass" class="password">
+    <input type="button" value="update" id="button">
+</body>
+
+</html>
